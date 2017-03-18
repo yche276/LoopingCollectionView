@@ -39,7 +39,34 @@ static NSString * const _collectionCellIdentifier = @"COLLECTION_CELL";
     [workingArray addObject:firstItem];
     self.dataSource = workingArray;
 }
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        [self.cvTopEvents scrollRectToVisible:CGRectMake(self.cvTopEvents.frame.size.width, 0, self.cvTopEvents.frame.size.width, self.cvTopEvents.frame.size.height) animated:NO];
+//    });
+    
+}
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // scroll to the 2nd page, which is showing the first item.
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+//        // scroll to the first page, note that this call will trigger scrollViewDidScroll: once and only once
+//        //        [self.cvTopEvents scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]
+//        //                                 atScrollPosition:UICollectionViewScrollPositionLeft
+//        //                                         animated:NO];
+//        [self.cvTopEvents scrollRectToVisible:CGRectMake(self.cvTopEvents.frame.size.width, 0, self.cvTopEvents.frame.size.width, self.cvTopEvents.frame.size.height) animated:NO];
+//        
+//        //        [self.cvTopEvents selectItemAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]
+//        //                                       animated:YES
+//        //                                 scrollPosition:UICollectionViewScrollPositionNone];
+    });
+
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
