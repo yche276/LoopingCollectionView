@@ -1,6 +1,6 @@
 # LoopingCollectionView
 
-
+![alt tag](https://github.com/yche276/LoopingCollectionView/blob/master/doc/demo.gif)
 
 ## Usage
 
@@ -20,4 +20,3 @@ Victor Chen, yche276@gmail.com
 
 Do whatever you like! Thank you!
 
-![alt tag](https://github.com/yche276/LoopingCollectionView/blob/master/doc/demo.gif)
