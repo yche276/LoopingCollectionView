@@ -12,5 +12,7 @@
     
 }
 @property (nonatomic, strong) IBOutlet UILabel *textLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *imgView;
+
 
 @end

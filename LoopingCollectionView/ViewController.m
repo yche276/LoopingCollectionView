@@ -21,6 +21,7 @@ static NSString * const _collectionCellIdentifier = @"COLLECTION_CELL";
     
 }
 @property (strong, nonatomic) NSArray *dataSource;
+@property (strong, nonatomic) IBOutlet UICollectionView *cvTopEvents;
 
 @end
 
@@ -30,7 +31,7 @@ static NSString * const _collectionCellIdentifier = @"COLLECTION_CELL";
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.dataSource = @[@0, @1, @2, @3, @4, @5];
+    self.dataSource = @[@1, @2, @3];
     
     id firstItem = [self.dataSource firstObject];
     id lastItem = [self.dataSource lastObject];
@@ -38,10 +39,17 @@ static NSString * const _collectionCellIdentifier = @"COLLECTION_CELL";
     [workingArray insertObject:lastItem atIndex:0];
     [workingArray addObject:firstItem];
     self.dataSource = workingArray;
+    
+    
+//    [self.cvTopEvents scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]
+//                             atScrollPosition:UICollectionViewScrollPositionNone
+//                                     animated:YES];
+    
 }
+
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    static dispatch_once_t onceToken;
+//    static dispatch_once_t onceToken;
 //    dispatch_once(&onceToken, ^{
 //        [self.cvTopEvents scrollRectToVisible:CGRectMake(self.cvTopEvents.frame.size.width, 0, self.cvTopEvents.frame.size.width, self.cvTopEvents.frame.size.height) animated:NO];
 //    });
@@ -85,12 +93,17 @@ static NSString * const _collectionCellIdentifier = @"COLLECTION_CELL";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:_collectionCellIdentifier forIndexPath:indexPath];
-    float r = RAND_FROM_TO(0,255);
-    float g = RAND_FROM_TO(0,255);
-    float b = RAND_FROM_TO(0,255);
-    cell.backgroundColor = COLOR(r, g, b, 1.0f);
+//    float r = RAND_FROM_TO(0,255);
+//    float g = RAND_FROM_TO(0,255);
+//    float b = RAND_FROM_TO(0,255);
+//    cell.backgroundColor = COLOR(r, g, b, 1.0f);
     
-    cell.textLabel.text = [NSString stringWithFormat:@"Index = %ld", indexPath.row];
+//    cell.textLabel.text = [NSString stringWithFormat:@"Index = %ld", indexPath.row];
+    NSLog(@"indexPath = %@", indexPath.description);
+    
+    NSInteger index = [[self.dataSource objectAtIndex:indexPath.row] integerValue];
+    
+    cell.imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%ld.png", index]];
     return cell;
 }
 
